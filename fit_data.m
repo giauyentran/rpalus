@@ -27,6 +27,6 @@ hold on
 fplot(fit_fn)
 xlabel('Time (hours)')
 ylabel('Optical Density')
-legend('Data', 'Fitted Curve')
+legend('Data', 'Fitted Curve', 'Location', 'Northwest')
 
 end
