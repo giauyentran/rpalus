@@ -1,4 +1,4 @@
-function [fitobject, gof, growth_rate] = fit_data(data,data_range,time)
+function [fitobject, gof, growth_rate, yield] = fit_data(data,data_range,time)
 % Takes our data and outputs the curve fit parameters, along with a plot of 
 % the experimental data and fit.
 %
@@ -12,6 +12,8 @@ function [fitobject, gof, growth_rate] = fit_data(data,data_range,time)
 %   Returns:
 %       fitobject:
 %       gof:
+%       growth_rate:
+%       yield:
 
 % Create new figure
 figure; clf;
@@ -21,6 +23,7 @@ figure; clf;
 coeff_values = [coeffvalues(fitobject)];
 fit_fn = @(x) coeff_values(1) * exp(coeff_values(2)*x);
 growth_rate = 0.69314/coeff_values(2);
+yield = max(data) - min(data);
 
 % plot
 semilogy(time(data_range), data(data_range), '*')
